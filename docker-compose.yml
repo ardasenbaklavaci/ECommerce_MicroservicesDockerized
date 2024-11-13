@@ -1,0 +1,66 @@
+version: '3.4'
+
+services:
+  service1:
+    image: authservis
+    build:
+      context: ./Services/ECommerce.Services.AuthAPI
+      dockerfile: Dockerfile
+    ports:
+      - "7054:80"
+    networks:
+      - mynetwork
+
+  service2:
+    image: couponservis
+    build:
+      context: ./Services/ECommerce.Services.CouponAPI
+      dockerfile: Dockerfile
+    ports:
+      - "7053:80"
+    networks:
+      - mynetwork
+
+  service3:
+    image: productapiservis
+    build:
+      context: ./Services/ECommerce.Services.ProductAPI
+      dockerfile: Dockerfile
+    ports:
+      - "7055:8080"
+    networks:
+      - mynetwork
+
+  service4:
+    image: shoppingcartservis
+    build:
+      context: ./Services/ECommerce.Services.ShoppingCartAPI
+      dockerfile: Dockerfile
+    ports:
+      - "7056:80"
+    networks:
+      - mynetwork
+
+  service5:
+    image: emailservis
+    build:
+      context: ./Services/ECommerce.Services.EmailAPI
+      dockerfile: Dockerfile
+    ports:
+      - "7018:80"
+    networks:
+      - mynetwork
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Arda@112"
+    ports:
+      - "1433:1433"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge

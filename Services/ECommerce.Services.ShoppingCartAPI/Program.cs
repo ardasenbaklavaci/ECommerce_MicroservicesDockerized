@@ -1,5 +1,4 @@
 using AutoMapper;
-using ECommerce.MessageBus;
 using ECommerce.Services.ShoppingCartAPI;
 using ECommerce.Services.ShoppingCartAPI.Data;
 using ECommerce.Services.ShoppingCartAPI.Extensions;

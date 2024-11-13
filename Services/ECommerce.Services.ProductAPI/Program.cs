@@ -22,6 +22,19 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
+//Cors ayarý
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:7222") // Change to your frontend URL
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
+//Cors ayarý
+
 // Swagger yapilandirmasi: Swagger'da JWT kimlik dogrulamasinin yapilandirilmasi
 builder.Services.AddSwaggerGen(option =>
 {
@@ -53,6 +66,8 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+app.UseCors("AllowSpecificOrigin"); // yukarýda yarattýðýmýz cors iznini kullanma...
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -66,6 +81,11 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseRouting();
+
+// Cors ayarý...
+app.UseCors("AllowSpecificOrigin");
+//
 
 ApplyMigration();
 

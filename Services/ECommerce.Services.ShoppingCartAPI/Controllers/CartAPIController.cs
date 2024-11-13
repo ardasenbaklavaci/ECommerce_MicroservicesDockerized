@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
-using ECommerce.MessageBus;
 using ECommerce.Services.ShoppingCartAPI.Data;
 using ECommerce.Services.ShoppingCartAPI.Models;
 using ECommerce.Services.ShoppingCartAPI.Models.Dtos;
 using ECommerce.Services.ShoppingCartAPI.Service.IService;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.PortableExecutable;
 
 namespace ECommerce.Services.ShoppingCartAPI.Controllers
 {

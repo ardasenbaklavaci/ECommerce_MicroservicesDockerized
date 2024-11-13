@@ -53,7 +53,20 @@ builder.Services.AddSwaggerGen(option =>
 builder.AddAppAuthentication(); // JWT ile kimlik dogrulama ve yetkilendirme islemlerini yapilandirir
 builder.Services.AddAuthorization();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:7222") // Change to your frontend URL
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
+
 var app = builder.Build();
+
+app.UseCors("AllowSpecificOrigin");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
