@@ -12,6 +12,14 @@ Docker, uygulamaları hızlı ve taşınabilir bir şekilde çalıştırmayı sa
 
 - Kolay Yönetim ve Dağıtım: Docker, mikroservislerin daha hızlı dağıtılmasını sağlar. Bir konteyner ortamı içinde paketlenen .NET mikroservis, Kubernetes gibi konteyner orkestrasyon araçları ile kolayca yönetilebilir.
 
+## Docker Konteynır'ını çalıştırma:
+
+CMD' yi açın. ECommerce_Microservices-master isimli çözüm klasörümüze cd komutu ile gidin.
+
+```
+docker-compose up --build
+```
+Komutu ile projeyi dockerize edin. Hata olmaz ise Docker Desktop'ta projenin MSSQL Veritabanı ve Mikroservislerini göreceksiniz. 
 
 # Mikroservis E-Ticaret Projesi
 ## Proje hakkında
